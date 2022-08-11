@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8" />
+<title>Conditional Testing 2</title>
+<meta name="description" content="Conditional Testing 2. Version 1.0" />
+<meta name="author" content="The Gamer's Guide to Coding" />
+<meta name="dcterms.rights" content="https://creativecommons.org/licenses/by-sa/4.0/" />
+
+<style>
+#mainContent {
+  position: absolute;
+  background-image: url("./assets/skulls.jpg");
+  width: 400px;
+  height: 300px;
+  border: 1px solid blue;
+}
+
+.skull {
+  position: absolute;
+  width: 125px;
+  height: 200px;
+  top: 45px;
+}
+#yellow { left: 5px;   }
+#red    { left: 140px;  }
+#green  { left: 270px;  }
+
+p {
+  position: absolute;
+  margin: 0;
+  top: 260px;
+  left: 10px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 1.4em;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+  <div id="mainContent">
+    <div id="yellow" class="skull" onclick="divClick(this)";></div>
+    <div id="red" class="skull" onclick="divClick(this)";></div>
+    <div id="green" class="skull" onclick="divClick(this)";></div>
+    <p>Click the Yellow Skull</p>
+  </div>
+
+  <script>
+    function divClick(div) {
+      switch (div.id) {
+        case ("yellow"):
+          console.log ("Correct, the skull you chose is yellow.");
+          break;
+        case ("red"):
+          console.log ("Wrong, the skull you chose is red.");
+          break;
+        case ("green"):
+          console.log ("Wrong, the skull you chose is green.");
+          break;
+      }
+    }
+  </script>
+
+</body>
+</html>

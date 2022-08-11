@@ -1,0 +1,13 @@
+html {
+  font-size: 62.5%;
+}
+
+#canvas1 {
+  border: 0.3rem solid #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100rem;
+  width: 50rem;
+}

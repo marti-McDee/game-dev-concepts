@@ -1,0 +1,23 @@
+{
+  "name": "enemy-variety",
+  "version": "1.0.0",
+  "description": "",
+  "main": "prettier.config.js",
+  "scripts": {
+    "prettier": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marti-McDee/enemy-variety.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marti-McDee/enemy-variety/issues"
+  },
+  "homepage": "https://github.com/marti-McDee/enemy-variety#readme",
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}

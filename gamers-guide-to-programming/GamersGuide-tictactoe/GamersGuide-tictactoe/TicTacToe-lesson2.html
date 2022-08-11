@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<title>Tic Tac Toe - Lesson 2</title>
+<meta name="description" content="Tic Tac Toe - Lesson 2. Version 1.0" />
+<meta name="author" content="The Gamer's Guide to Coding; www.buenacreek.com" />
+<meta name="dcterms.rights" content="https://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+table {
+  table-layout: fixed;
+  width: 120px;
+  border-collapse: collapse;
+  border: 1px solid black;
+  font-family: "Arial Black", Gadget, sans-serif;
+  cursor: pointer;
+}
+
+td {
+  border: 1px solid lightgray;
+  text-align: center;
+}
+
+p {
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+</style>
+
+</head>
+
+<!-- Start of visible page -->
+<body>
+
+    <!-- HTML table for tic-tac-toe game board -->
+    <table id="table">
+      <tr>
+        <td id=1>&nbsp;</td>
+        <td id=2>&nbsp;</td>
+        <td id=3>&nbsp;</td>
+      </tr>
+      <tr>
+        <td id=4>&nbsp;</td>
+        <td id=5>&nbsp;</td>
+        <td id=6>&nbsp;</td>
+      </tr>
+      <tr>
+        <td id=7>&nbsp;</td>
+        <td id=8>&nbsp;</td>
+        <td id=9>&nbsp;</td>
+      </tr>
+    </table>
+
+    <p id="turn">Turn: X</p>
+
+    <!-- JavaScript code placed at end of <body> element -->
+    <script>
+
+      // Define variables used in the game
+
+      // x is an 2-dimenstional array with three rows of three columns each that depicts the play board
+      var x = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ]
+
+      var turn = false;
+      var clickCounter = 0;
+      var gameOver = false;
+
+      // Create onclick event handlers for every cell in the table
+      var myTable = document.getElementById("table");
+      for (var row = 0; row < myTable.rows.length; row++) {
+        for (var col = 0; col < myTable.rows[row].cells.length; col++) {
+          myTable.rows[row].cells[col].onclick = function() { setCellValue(this) };
+        }
+      }
+
+      // Put an X or O in the cell, depending on who's turn it is
+      function setCellValue(cell) {
+        if (gameOver) { return; }
+        if (cell.textContent.charCodeAt() == 160) {
+          if (!turn) {                          // Check if turn == false
+            cell.textContent = "X";
+            document.getElementById("turn").textContent = "Turn: O";
+          } else {
+            cell.textContent = "O"
+            document.getElementById("turn").textContent = "Turn: X";
+          }
+          turn = !turn;
+          clickCounter++;
+          fillArray(cell.id);
+        }
+      }
+
+      // Keep track of X and O in each array element
+      function fillArray(cellId) {
+        if (turn == 0)
+          x[cellId -1] = 1;
+        else {
+          x[cellId -1] = 4;
+        }
+        var score = updateScore();
+        if (score != "") {
+          document.getElementById("turn").textContent = score;
+          gameOver = true;
+        } else if(clickCounter >= 9) {
+          document.getElementById("turn").textContent = "Cat's Tail";
+          gameOver = true;
+        }
+      }
+
+      // Keep track of the score, and see who's won
+      function updateScore() {
+        var t = "";
+
+        // Go through all possible ways to win
+        // wins by row
+        if (x[0] + x[1] + x[2] == 3)
+          t = "O wins!";
+        if (x[0] + x[1] + x[2] == 12)
+          t = "X wins!"
+        if (x[3] + x[4] + x[5] == 3)
+          t = "O wins!"
+        if (x[3] + x[4] + x[5] == 12)
+          t = "X wins!"
+        if (x[6] + x[7] + x[8] == 3)
+          t = "O wins!"
+        if (x[6] + x[7] + x[8] == 12)
+          t = "X wins!"
+
+        // wins by column
+        if (x[0] + x[3] + x[6] == 3)
+          t = "O wins!";
+        if (x[0] + x[3] + x[6] == 12)
+          t = "X wins!"
+        if (x[1] + x[4] + x[7] == 3)
+          t = "O wins!"
+        if (x[1] + x[4] + x[7] == 12)
+          t = "X wins!"
+        if (x[2] + x[5] + x[8] == 3)
+          t = "O wins!"
+        if (x[2] + x[5] + x[8] == 12)
+          t = "X wins!"
+
+        // wins by diagonal
+        if (x[0] + x[4] + x[8] == 3)
+          t = "O wins!";
+        if (x[0] + x[4] + x[8] == 12)
+          t = "X wins!"
+        if (x[2] + x[4] + x[6] == 3)
+          t = "O wins!"
+        if (x[2] + x[4] + x[6] == 12)
+          t = "X wins!"
+
+        return t;
+
+      }
+
+    </script>
+
+</body>
+
+</html>

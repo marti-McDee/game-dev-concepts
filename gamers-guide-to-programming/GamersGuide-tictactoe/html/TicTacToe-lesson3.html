@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<title>Tic Tac Toe - Lesson 3</title>
+<meta name="description" content="Tic Tac Toe - Lesson 3. Version 1.0" />
+<meta name="author" content="The Gamer's Guide to Coding; www.buenacreek.com" />
+<meta name="dcterms.rights" content="https://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Style sheet for definining the look of the page -->
+<style>
+#mainContent {
+  background-color: #1072cc;
+  border-radius: 4px;
+  padding: 5px;
+  width: 300px;
+  height: 350px;
+  overflow: hidden;
+}
+.background {
+  position: absolute;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+.button {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 2px solid #00bfff;
+  border-style: outset;
+  color:#fff;
+  background-color:#8533ff;
+  cursor: pointer;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size:45px;
+  line-height:35px;
+  border-radius:4px;
+}
+
+#turn {
+  width: 300px;
+  margin: 310px 0 0 0;
+  text-align: center;
+}
+
+p {
+  font-family: "Arial Black", Gadget, sans-serif;
+  color:#fff;
+}
+
+</style>
+<!-- External JavaScript library for automatic hhandling style prefixes -->
+<script src="prefixfree.min.js"></script>
+</head>
+
+<body>
+
+  <div id="mainContent">
+
+        <!-- Control buttons for each tile. Note the onclick events for each button -->
+
+        <!-- row 1 -->
+        <input id="1" type="button" class="button" style="margin: 0 0 0 0;" value=" " onclick="clickButton(this);"/>
+        <input id="2" type="button" class="button" style="margin: 0 0 0 100px;" value=" " onclick="clickButton(this);"/>
+        <input id="3" type="button" class="button" style="margin: 0 0 0 200px;" value=" " onclick="clickButton(this);"/>
+
+        <!-- row 2 -->
+        <input id="4" type="button" class="button" style="margin: 100px 0 0 0;" value=" " onclick="clickButton(this);"/>
+        <input id="5" type="button" class="button" style="margin: 100px 0 0 100px;" value=" " onclick="clickButton(this);"/>
+        <input id="6" type="button" class="button" style="margin: 100px 0 0 200px;" value=" " onclick="clickButton(this);"/>
+
+        <!-- row 3 -->
+        <input id="7" type="button" class="button" style="margin: 200px 0 0 0;" value=" " onclick="clickButton(this);"/>
+        <input id="8" type="button" class="button" style="margin: 200px 0 0 100px;" value=" " onclick="clickButton(this);"/>
+        <input id="9" type="button" class="button" style="margin: 200px 0 0 200px;" value=" " onclick="clickButton(this);"/>
+
+        <!-- Text display for current player, X or O -->
+        <p id="turn">Turn: X</p>
+
+    </div>
+
+    <!-- JavaScript code displays or hides the selected item of clothing -->
+    <script type="text/javascript">
+
+      // Define variables used in the game
+
+      // The 'x' variable is used to store X and O values.
+      //   It is formatted here to look like a tic-tac-toe playboard, but that's just for us humans. JavaScript doesn't much care.
+      var x = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ]
+      var turn = false;           // Keep track of who's turn it is
+      var clickCounter = 0;       // Count the clicks to a button
+      var gameOver = false;       // Monitor when the game is over
+
+      // This function called when a button is clicked
+      function clickButton(button) {
+        if (gameOver) { return; }                   // Prevent further moves if the game is over
+        if (button.value == " ") {
+          if (turn == 0) {
+            button.value = "X";
+            document.getElementById("turn").textContent = "Turn: O";
+          } else {
+            button.value = "O"
+            document.getElementById("turn").textContent = "Turn: X";
+          }
+          turn = !turn;
+          clickCounter++;
+          fillArray(button.id);
+        }
+      }
+
+      // Keep track of X and O in each array element
+      function fillArray(buttonId) {
+        if (!turn)                                                      //If turn == false
+          x[buttonId -1] = 1;
+        else {
+          x[buttonId -1] = 4;
+        }
+        var score = updateScore();
+        if (score != "") {                                              // If not empty, game is over
+          document.getElementById("turn").textContent = score;          // Update text in 'turn' element
+          gameOver = true;
+        } else if(clickCounter >= 9) {                                  // Cat's tail after 9 clicks
+          document.getElementById("turn").textContent = "Cat's Tail";
+          gameOver = true;
+        }
+      }
+
+      // Keep track of the score, and see who's won
+      function updateScore() {
+        var t = "";
+        if (x[0] + x[1] + x[2] == 3)
+          t = "O wins!";
+        if (x[0] + x[1] + x[2] == 12)
+          t = "X wins!"
+        if (x[3] + x[4] + x[5] == 3)
+          t = "O wins!"
+        if (x[3] + x[4] + x[5] == 12)
+          t = "X wins!"
+        if (x[6] + x[7] + x[8] == 3)
+          t = "O wins!"
+        if (x[6] + x[7] + x[8] == 12)
+          t = "X wins!"
+
+        if (x[0] + x[3] + x[6] == 3)
+          t = "O wins!";
+        if (x[0] + x[3] + x[6] == 12)
+          t = "X wins!"
+        if (x[1] + x[4] + x[7] == 3)
+          t = "O wins!"
+        if (x[1] + x[4] + x[7] == 12)
+          t = "X wins!"
+        if (x[2] + x[5] + x[8] == 3)
+          t = "O wins!"
+        if (x[2] + x[5] + x[8] == 12)
+          t = "X wins!"
+
+        if (x[0] + x[4] + x[8] == 3)
+          t = "O wins!";
+        if (x[0] + x[4] + x[8] == 12)
+          t = "X wins!"
+        if (x[2] + x[4] + x[6] == 3)
+          t = "O wins!"
+        if (x[2] + x[4] + x[6] == 12)
+          t = "X wins!"
+
+        return t;
+
+      }
+
+  </script>
+
+</body>
+
+</html>

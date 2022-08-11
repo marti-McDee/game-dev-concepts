@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8" />
+<title>CSS Animation - Events 2</title>
+<meta name="description" content="CSS Animation - Events 2. Version 1.0" />
+<meta name="author" content="The Gamer's Guide to Coding" />
+<meta name="dcterms.rights" content="https://creativecommons.org/licenses/by-sa/4.0/" />
+
+<style>
+/* mainContent style for static background image */
+#mainContent {
+  position: absolute;
+  background-image: url("./assets/stellar.jpg");
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+}
+
+/* General class for all UFOs */
+.ufo {
+  position: absolute;
+}
+
+/* Style rules for three UFOs set position and animation */
+#ufo1 {
+  width: 400px;
+  height:162px;
+  left: 100px;
+  top: 80px;
+  margin-top: 800px;
+  transition: margin-top 5s ease-in-out;
+
+  animation-name: hoverLarge;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-play-state: paused;
+}
+#ufo2 {
+  width: 160px;
+  height: 65px;
+  margin-top: 165px;
+  left: 60px;
+  top: 90px;
+
+  animation-name: hoverLarge;
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+#ufo3 {
+  width: 200px;
+  height:81px;
+  left:325px;
+  top: 150;
+  animation: hoverSmall 6s infinite ease-in-out;
+}
+/* @keyframe rules for large and small UFOs */
+@keyframes hoverLarge {
+  0%   { top: 80px }
+  50%  { top: 230px  }
+  100% { top: 80px  }
+}
+@keyframes hoverSmall {
+  0%   { top: 80px }
+  50%  { top: 180px  }
+  100% { top: 80px  }
+}
+
+</style> <script src="prefixfree.min.js"></script>
+</head>
+
+<body onload=init();>   <!-- call init() function when pages loads -->
+  <!-- mainContent DIV holds all three UFOs -->
+  <div id="mainContent">
+
+    <img id="ufo3" class="ufo" alt="" src="./assets/ufo2.png" />
+    <img id="ufo2" class="ufo" alt="" src="./assets/ufo2.png" />
+    <img id="ufo1" class="ufo" alt="" src="./assets/ufo1.png" />
+
+  </div>
+
+  <script>
+
+    // Sets up event listeners for animationiteration, and mouse clicks on the DIV
+    document.getElementById("ufo1").addEventListener("animationiteration", iterations);
+    document.getElementById("mainContent").addEventListener("click", restartTransition);
+    var count = 0;
+
+    /*  Counts the number of iterations. When iterations == 2,
+        the main ufo1 is returned to its 800px position.
+    */
+    function iterations() {
+      count++;
+      if (count == 2) {
+        console.log ("2 iterations");
+        var ufo1 = document.getElementById("ufo1");
+        ufo1.style.marginTop = "800px";
+        ufo1.style.animationPlayState = "paused";
+      }
+    }
+
+    /*  Restarts the transition by returning the top margin
+        back to 0px.
+    */
+    function restartTransition() {
+      console.log ("flying back");
+      ufo1.style.marginTop = "0px";
+      count = 0;
+    }
+
+    /*  This function called when the page first loads
+        It sets the initial top margin of ufo1, creates a listener for
+        the element's transitionend event, and starts the animation
+    */
+    function init() {
+      var ufo1 = document.getElementById("ufo1");
+      ufo1.style.marginTop = "0px";
+      ufo1.addEventListener("transitionend", function() {
+        console.log ("transition ended");
+        ufo1.style.animationPlayState = "running"; }
+      );
+    }
+
+  </script>
+
+</body>
+</html>

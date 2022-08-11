@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<title>Zombie Girl Dressup, Lesson 2</title>
+<meta name="description" content="Zombie Girl Dressup, Lesson 2. Version 1.0">
+<meta name="author" content="The Gamer's Guide to Coding; www.buenacreek.com" />
+<meta name="dcterms.rights" content="https://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Style sheet for definining the basic look of the page -->
+<style>
+#mainContent {
+    background-color: #1072cc;
+    border-radius: 4px;
+    padding: 10px;
+    width: 750px;
+    height: 800px;
+    overflow: hidden;
+}
+.background {
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+.image {
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    visibility: hidden;
+}
+.button, .button-all {
+    position: absolute;
+    margin-left: 610px;
+    color:#fff;
+    background-color:#8533ff;
+    font-family:'Helvetica Neue',sans-serif;
+    font-size:14px;
+    line-height:25px;
+    border:0;
+    border-radius:15px;
+    width: 135px;
+    height:25px;
+}
+#backgroundTitle {
+  animation: slowBounce 5s infinite;
+  margin-left: 0px;
+  margin-top: 0px;
+  animation-play-state: running;
+}
+@keyframes slowBounce {
+    0% {
+        transform: translate3d(0px, 0px, 0px);
+        animation-timing-function: ease-in);
+    }
+    50% {
+        transform: translate3d(0px, 20px, 0px);
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translate3d(0px, 0px, 0px);
+    }
+}
+</style>
+<script src="./images/prefixfree.min.js"></script>
+</head>
+
+<body>
+
+  <div id="mainContent">
+        <!-- Background images -->
+        <img id="backgroundMain" alt="Main Background;background" class="background" src="./images/Zgirl-BaseBackground.jpg">
+        <img id="backgroundTitle" alt="#" class="background" src="./images/Zgirl-Title.png">
+
+        <!-- Overlay images for article of clothing -->
+        <img id="topMetallic" alt="Metallic Top;top" class="image" src="./images/Zgirl-TopMetallic.png">
+        <img id="topTied" alt="Tied Top;top" class="image" src="./images/Zgirl-TopTied.png">
+        <img id="topTee" alt="Tee Top;top" class="image" src="./images/Zgirl-TopTee.png">
+        <img id="topPurple" alt="Purple Top;top" class="image" src="./images/ZGirl-TopPurple.png">
+        <img id="shoesMetallic" alt="Metallic Heels;shoes" class="image" src="./images/Zgirl-ShoesMetallic.png">
+        <img id="shoesLeather" alt="Leather Heels;shoes" class="image" src="./images/Zgirl-ShoesLeather.png">
+        <img id="shoesSandals" alt="Sandals;shoes" class="image" src="./images/Zgirl-ShoesSandals.png">
+        <img id="shoesSneakers" alt="Sneakers;shoes" class="image" src="./images/Zgirl-ShoesSneakers.png">
+        <img id="jeansBlue" alt="Blue Pants;pants" class="image" src="./images/Zgirl-JeansBlue.png">
+        <img id="jeansBrown" alt="Brown Pants;pants;" class="image" src="./images/Zgirl-JeansBrown.png">
+        <img id="skirtJeans" alt="Jeans Skirt;skirt" class="image" src="./images/Zgirl-SkirtJeans.png">
+        <img id="shoesBoots" alt="Boots;shoes" class="image" src="./images/Zgirl-ShoesBoots.png">
+        <img id="accessoriesBelt" alt="Belt;" class="image" src="./images/Zgirl-AccessoriesBelt.png">
+        <img id="skirtLace" alt="Lace Skirt;skirt" class="image" src="./images/Zgirl-SkirtLace.png">
+        <img id="hairBlonde" alt="Blonde Hair;hair" class="image" src="./images/Zgirl-HairBlonde.png">
+        <img id="hairBlack" alt="Black Hair;hair" class="image" src="./images/Zgirl-HairBlack.png">
+        <img id="hairLong" alt="Long Hair;hair" class="image" src="./images/Zgirl-HairLong.png">
+        <img id="accessoriesBracelet" alt="Bracelet;" class="image" src="./images/Zgirl-AccessoriesBracelet.png">
+        <img id="accessoriesShoppingBag" alt="Bag;" class="image" src="./images/Zgirl-AccessoriesShoppingBag.png">
+        <img id="accessoriesGlasses" alt="Glasses;" class="image" src="./images/Zgirl-AccessoriesGlasses.png">
+
+        <!-- Control button to hide everything -->
+        <input type="button" class="button-all" style="margin-top:47em;" value="Hide All" onclick="hideAll();"/>
+
+    </div>
+
+    <!-- JavaScript code displays or hides the selected item of clothing -->
+    <script>
+
+      <!-- Dynamically add control buttons for each article of clothing -->
+      var innerHTML = "";                                                 // Create temporary variable
+      var position = 1;                                                   // Starting position for first button
+      var images = document.getElementsByClassName('image');              // Get collection of images
+        for (var i = 0, length = images.length; i < length; i++) {        // Go through images to get the alt= text
+          var altText = images[i].alt.split(";");                         // Split alt text into 2 element array (clothing name, clothing type)
+          var tstring = "<input type='button' class='button' style='margin-top:"    // Create a string for HTML button
+            + position + "em;' value='" + altText[0]
+            + "' name='" + altText[0] + ";" + altText[1]
+            + "' onclick=\"displayImage(this, '" + images[i].id + "');\" />";
+          //console.log(tstring);                                         // For testing; use the Console in your browser to view
+          innerHTML += tstring;                                           // Add new button code to temporary variable
+          position += 2.15                                                // Vertical position for next button
+          images[i].style.visibility = "hidden";                          // Set initial visibility of clothing item to hidden
+        }
+        document.getElementById("mainContent").innerHTML += innerHTML;    // Insert button code to existing HTML in mainContent DIV
+
+        function displayImage(button, item){
+          var img = document.getElementById(item);                            // Get the image object passed into function
+          var imageAlt = '';
+          if (img.style.visibility == "visible") {                            // If the image is already visible, make it invisible
+            img.style.visibility = "hidden";
+            button.style.backgroundColor = "#8533ff";
+          } else {                                                            // Otherwise,
+            var altText = img.alt.split(";");                                 // Break up the alt text for the current image (clothing name; clothing type)
+            if (altText[1] != "") {                                           // Only do this if there's a "one-only" clothing type
+              var images = document.getElementsByClassName('image');          // Get collection of images
+              for (var i = 0, imglength = images.length; i < imglength; i++) {      // Loop through image collection
+                var imgText = images[i].alt.split(";");
+                if (altText[1] == imgText[1] && images[i].style.visibility == "visible") {   // If button clothing type matches an image already visible
+                  images[i].style.visibility = "hidden";                    // Hide previous image of same clothing type
+                  imageAlt = images[i].alt;
+                }
+              }
+              var buttons = document.getElementsByClassName('button');        // Get collection of buttons
+              for (var i = 0, length = buttons.length; i < length; i++) {     // Loop through button collection
+                if (imageAlt == buttons[i].name) {                            // If button clothing type matches an image already visible
+                  buttons[i].style.backgroundColor = "#8533ff";               //   reset the color of that button
+                }
+              }
+            }
+            img.style.visibility = "visible";                                 // Make selected image visible
+            button.style.backgroundColor = "#e600e6";
+          }
+        }
+
+        function hideAll(){                                                   // Function called by 'Hide All' button resets all clothing items to the initial state
+            var images = document.getElementsByClassName('image');            // Get collection of images
+            for (var i = 0, length = images.length; i < length; i++) {        // Loop through images
+              images[i].style.visibility = "hidden";                          //   and make them all hidden
+            }
+            var buttons = document.getElementsByClassName('button')           // Get collection of buttons
+            for (var i = 0, length = buttons.length; i < length; i++) {       // Loop through buttons
+              buttons[i].style.backgroundColor = "#8533ff";                   //   and reset color
+            }
+        }
+    </script>
+
+</body>
+
+</html>

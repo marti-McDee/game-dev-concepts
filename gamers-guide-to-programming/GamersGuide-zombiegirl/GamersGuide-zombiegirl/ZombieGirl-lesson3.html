@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<title>Zombie Girl Dressup, Lesson 3</title>
+<meta name="description" content="Zombie Girl Dressup, Lesson 3. Version 1.0">
+<meta name="author" content="The Gamer's Guide to Coding; www.buenacreek.com" />
+<meta name="dcterms.rights" content="https://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Style sheet for definining the basic look of the page -->
+<style>
+#mainContent {
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 8px;
+  border-color: #1072cc;
+  width: 750px;
+  height: 800px;
+  overflow: hidden;
+  position:absolute;
+}
+#panel-slide {
+  position: absolute;
+  margin-left: 730px;
+  margin-top: 5px;
+  width: 220px;
+  height: 790px;
+  overflow: hidden !important;
+  background-color: #29293d;
+  transition: left 0.2s ease-in 0s;
+  left: 0;
+}
+.panel-inner {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 0px;
+  width: 150px;
+  height: 790px;
+  padding: 0px 5px 5px 10px;
+  background-color: #7429a8;
+  visibility: hidden;
+}
+.background {
+  position: absolute;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+.image {
+  position: absolute;
+  margin-left: 0px;
+  margin-top: 0px;
+  visibility: hidden;
+}
+.image-button {
+  position: absolute;
+  display: block;
+  margin-left: 0px;
+}
+.image-thumb {
+  position: absolute;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #1072cc;
+  border-radius:15px;
+  width: 120px;
+  height: 120px;
+  margin-left:5px;
+}
+.button-all {
+  position: absolute;
+  margin-left: 0px;
+  color:#fff;
+  background-color: #7429a8;
+  font-family:'Helvetica Neue',sans-serif;
+  font-size:12px;
+  line-height:23px;
+  border:0;
+  border-radius:1px;
+  width: 20px;
+  height: 22px;
+}
+#backgroundTitle {
+  animation: slowBounce 5s infinite;
+  margin-left: 0px;
+  margin-top: 0px;
+  animation-play-state: running;
+}
+p, h1 {
+  margin: 1px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #fff;
+}
+h1 {
+  font-size: 1.1em;
+}
+@keyframes slowBounce {
+    0% {
+        transform: translate3d(0px, 0px, 0px);
+        animation-timing-function: ease-in);
+    }
+    50% {
+        transform: translate3d(0px, 20px, 0px);
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translate3d(0px, 0px, 0px);
+    }
+}
+
+</style>
+<script src="./images/prefixfree.min.js"></script>
+</head>
+
+<body>
+
+  <div id="mainContent">
+
+        <!-- Background images -->
+        <img id="backgroundMain" alt="Main Background;background" class="background" src="./images/Zgirl-BaseBackground.jpg">
+        <img id="backgroundTitle" alt="#" class="background" src="./images/Zgirl-Title.png">
+
+        <!-- Overlay images for article of clothing -->
+        <img id="baseSwimsuit" alt="Swimsuit;" class="image" src="./images/Zgirl-BaseSwimsuit.png">
+        <img id="hairLong" alt="Long Hair;hair" class="image" src="./images/Zgirl-HairLong.png">
+        <img id="topMetallic" alt="Metallic Top;top;" class="image" src="./images/Zgirl-TopMetallic.png">
+        <img id="topTied" alt="Tied Top;top;" class="image" src="./images/Zgirl-TopTied.png">
+        <img id="topTee" alt="Tee Top;top;" class="image" src="./images/Zgirl-TopTee.png">
+        <img id="topPurple" alt="Purple Top;top;" class="image" src="./images/ZGirl-TopPurple.png">
+        <img id="shoesMetallic" alt="Metallic Heels;shoes" class="image" src="./images/Zgirl-ShoesMetallic.png">
+        <img id="shoesLeather" alt="Leather Heels;shoes" class="image" src="./images/Zgirl-ShoesLeather.png">
+        <img id="shoesSandals" alt="Sandals;shoes" class="image" src="./images/Zgirl-ShoesSandals.png">
+        <img id="shoesSneakers" alt="Sneakers;shoes" class="image" src="./images/Zgirl-ShoesSneakers.png">
+        <img id="jeansBlue" alt="Blue Pants;pants" class="image" src="./images/Zgirl-JeansBlue.png">
+        <img id="jeansBrown" alt="Brown Pants;pants;" class="image" src="./images/Zgirl-JeansBrown.png">
+        <img id="skirtJeans" alt="Jeans Skirt;skirt" class="image" src="./images/Zgirl-SkirtJeans.png">
+        <img id="dressFlared" alt="Flared Dress;skirt" class="image" src="./images/Zgirl-FlaredDress.png">
+        <img id="dressPolka" alt="Polkadot Dress;skirt" class="image" src="./images/Zgirl-PolkadotDress.png">
+        <img id="shoesBoots" alt="Boots;shoes" class="image" src="./images/Zgirl-ShoesBoots.png">
+        <img id="accessoriesBelt" alt="Belt;" class="image" src="./images/Zgirl-AccessoriesBelt.png">
+        <img id="skirtLace" alt="Lace Skirt;skirt" class="image" src="./images/Zgirl-SkirtLace.png">
+        <img id="hairBlonde" alt="Blonde Hair;hair" class="image" src="./images/Zgirl-HairBlonde.png">
+        <img id="hairBlack" alt="Black Hair;hair" class="image" src="./images/Zgirl-HairBlack.png">
+        <img id="accessoriesBracelet" alt="Bracelet;" class="image" src="./images/Zgirl-AccessoriesBracelet.png">
+        <img id="accessoriesShoppingBag" alt="Bag;" class="image" src="./images/Zgirl-AccessoriesShoppingBag.png">
+        <img id="accessoriesGlasses" alt="Glasses;" class="image" src="./images/Zgirl-AccessoriesGlasses.png">
+
+        <div id="panel-slide">
+            <img id="btnClose" alt="Close" class="image-button" style="margin-top: 5px;" width="20" src="./images/btnClose.png" onclick="showPanel('panel0');">
+            <img id="btnHair" alt="Hair" class="image-button" style="margin-top: 70px;" width="20" src="./images/btnHair.png" onclick="showPanel('panel1');">
+            <img id="btnTops" alt="Tops" class="image-button" style="margin-top: 150px;" width="20" src="./images/btnTops.png" onclick="showPanel('panel2');">
+            <img id="btnPants" alt="Pants" class="image-button" style="margin-top: 230px;" width="20" src="./images/btnPants.png" onclick="showPanel('panel3');">
+            <img id="btnDresses" alt="Dresses" class="image-button" style="margin-top: 310px;" width="20" src="./images/btnDresses.png" onclick="showPanel('panel4');">
+            <img id="btnShoes" alt="Shoes" class="image-button" style="margin-top: 438px;" width="20" src="./images/btnShoes.png" onclick="showPanel('panel5');">
+            <img id="btnAccessories" alt="Accessories" class="image-button" style="margin-top: 518px;" width="20" src="./images/btnAccessories.png" onclick="showPanel('panel6');">
+
+            <!-- Control button to hide everything -->
+            <input type="button" class="button-all" style="margin-top:750px;" value="X" onclick="hideAll();"/>
+
+            <div id="panel1" class="panel-inner">
+              <h1>Hair</h1>
+              <img class="image-thumb" alt="Blonde Hair;hair" style="margin-top:0px;" src="./images/Zgirl-HairBlonde-thumb.png" onclick="displayImage(this, 'hairBlonde');">
+              <img class="image-thumb" alt="Black Hair;hair" style="margin-top:130px;" src="./images/Zgirl-HairBlack-thumb.png" onclick="displayImage(this, 'hairBlack');">
+              <img class="image-thumb" alt="Long Hair;hair" style="margin-top:260px;" src="./images/Zgirl-HairLong-thumb.png" onclick="displayImage(this, 'hairLong');">
+            </div>
+            <div id="panel2" class="panel-inner">
+              <h1>Tops</h1>
+              <img class="image-thumb" alt="Metallic Top;top" style="margin-top:0px;" src="./images/Zgirl-TopMetallic-thumb.png" onclick="displayImage(this, 'topMetallic');">
+              <img class="image-thumb" alt="Tied Top;top" style="margin-top:130px;" src="./images/Zgirl-TopTied-thumb.png" onclick="displayImage(this, 'topTied');">
+              <img class="image-thumb" alt="Tee Top;top" style="margin-top:260px;" src="./images/Zgirl-TopTee-thumb.png" onclick="displayImage(this, 'topTee');">
+              <img class="image-thumb" alt="Purple Top;top" style="margin-top:390px;" src="./images/ZGirl-TopPurple-thumb.png" onclick="displayImage(this, 'topPurple');">
+            </div>
+            <div id="panel3" class="panel-inner">
+              <h1>Pants</h1>
+              <img class="image-thumb" alt="Blue Pants;pants" style="margin-top:0px;" src="./images/Zgirl-JeansBlue-thumb.png" onclick="displayImage(this, 'jeansBlue');">
+              <img class="image-thumb" alt="Brown Pants;pants" style="margin-top:130px;" src="./images/Zgirl-JeansBrown-thumb.png" onclick="displayImage(this, 'jeansBrown');">
+            </div>
+            <div id="panel4" class="panel-inner">
+              <h1>Dresses &amp; More</h1>
+              <img class="image-thumb" alt="Jeans Skirt;skirt" style="margin-top:0px;" src="./images/Zgirl-SkirtJeans-thumb.png" onclick="displayImage(this, 'skirtJeans');">
+              <img class="image-thumb" alt="Lace Skirt;skirt" style="margin-top:130px;" src="./images/Zgirl-SkirtLace-thumb.png" onclick="displayImage(this, 'skirtLace');">
+              <img class="image-thumb" alt="Flared Dress;skirt" style="margin-top:260px;" src="./images/Zgirl-FlaredDress-thumb.png" onclick="displayImage(this, 'dressFlared');">
+              <img class="image-thumb" alt="Polkadot Dress;skirt" style="margin-top:390px;" src="./images/Zgirl-PolkadotDress-thumb.png" onclick="displayImage(this, 'dressPolka');">
+              <img class="image-thumb" alt="Swimsuit;skirt" style="margin-top:520px;" src="./images/Zgirl-BaseSwimsuit-thumb.png" onclick="displayImage(this, 'baseSwimsuit');">
+            </div>
+            <div id="panel5" class="panel-inner">
+              <h1>Shoes</h1>
+              <img class="image-thumb" alt="Metallic Heels;shoes" style="margin-top:0px;" src="./images/Zgirl-ShoesMetallic-thumb.png" onclick="displayImage(this, 'shoesMetallic');">
+              <img class="image-thumb" alt="Leather Heels;shoes" style="margin-top:130px;" src="./images/Zgirl-ShoesLeather-thumb.png" onclick="displayImage(this, 'shoesLeather');">
+              <img class="image-thumb" alt="Sandals;shoes" style="margin-top:260px;" src="./images/Zgirl-ShoesSandals-thumb.png" onclick="displayImage(this, 'shoesSandals');">
+              <img class="image-thumb" alt="Sneakers;shoes" style="margin-top:390px;" src="./images/Zgirl-ShoesSneakers-thumb.png" onclick="displayImage(this, 'shoesSneakers');">
+              <img class="image-thumb" alt="Boots;shoes" style="margin-top:520px;" src="./images/Zgirl-ShoesBoots-thumb.png" onclick="displayImage(this, 'shoesBoots');">
+            </div>
+            <div id="panel6" class="panel-inner">
+              <h1>Accessories</h1>
+              <img class="image-thumb" alt="Belt;" style="margin-top:0px;" src="./images/Zgirl-AccessoriesBelt-thumb.png" onclick="displayImage(this, 'accessoriesBelt');">
+              <img class="image-thumb" alt="Bracelet;" style="margin-top:130px;" src="./images/Zgirl-AccessoriesBracelet-thumb.png" onclick="displayImage(this, 'accessoriesBracelet');">
+              <img class="image-thumb" alt="Glasses;" style="margin-top:260px;" src="./images/Zgirl-AccessoriesGlasses-thumb.png" onclick="displayImage(this, 'accessoriesGlasses');">
+              <img class="image-thumb" alt="Bag;" style="margin-top:390px;" src="./images/Zgirl-AccessoriesShoppingBag-thumb.png" onclick="displayImage(this, 'accessoriesShoppingBag');">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript code displays or hides the selected item of clothing -->
+    <script>
+
+      function showPanel(panelNumber) {
+        var panel = document.getElementById("panel-slide");
+        if (panelNumber == 'panel0') {
+          panel.style.transition = "left 0.1s ease-in 0s";
+          panel.style.left = "0px";
+        } else {
+          for (var i = 1, length = 6; i <= length; i++) {
+            document.getElementById("panel" + i).style.visibility = "hidden";
+          }
+          var subPanel = document.getElementById(panelNumber)
+          subPanel.style.visibility = "visible";
+          panel.style.transition = "left 0.2s ease-in 0s";
+          panel.style.left = "-150px";
+        }
+      }
+
+      function displayImage(button, item){
+    		var img = document.getElementById(item);                            // Get the image object passed into function
+        var sTemp = button.alt.split(";");                                  // Get array of current button name text (clothing name; clothing type)
+        if (img.style.visibility == "visible") {                            // If the image is already visible, make it invisible
+          img.style.visibility = "hidden";
+        } else {                                                            // Otherwise,
+          var altText = img.alt.split(";");                                 // Break up the alt text for the current image (clothing name; clothing type)
+          if (altText[1] != "") {                                           // Only do this if there's a "one-only" clothing type
+            var images = document.getElementsByClassName('image');          // Get collection of images
+            for (var i = 0, imglength = images.length; i < imglength; i++) {      // Loop through image collection
+              var imgText = images[i].alt.split(";");
+              if (altText[1] == imgText[1] && images[i].style.visibility == "visible") {   // If button clothing type matches an image already visible
+                images[i].style.visibility = "hidden";                      // Hide previous image of same clothing type
+              }
+            }
+          }
+          img.style.visibility = "visible";                                 // Make selected image visible
+        }
+      }
+
+      function hideAll(){                                                   // Function called by 'Hide All' button resets all clothing items to the initial state
+          var images = document.getElementsByClassName('image');            // Get collection of images
+          for (var i = 0, length = images.length; i < length; i++) {        // Loop through images
+            images[i].style.visibility = "hidden";                          //   ad make them all hidden
+          }
+          var buttons = document.getElementsByClassName('button')           // Get collection of buttons
+          for (var i = 0, length = buttons.length; i < length; i++) {       // Loop through buttons
+            buttons[i].style.backgroundColor = "#8533ff";                   //   and reset color
+          }
+      }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+*,
+body::before,
+body::after{
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+#canvas1{
+  border: 0.3rem solid #000;
+  position: absolute;
+  height: 70rem;
+  width: 50rem;
+  background: #000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

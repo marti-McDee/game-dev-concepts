@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8" />
+<title>Debug Playground</title>
+<meta name="description" content="Debug Playground. Version 1.0" />
+<meta name="author" content="The Gamer's Guide to Coding" />
+<meta name="dcterms.rights" content="https://creativecommons.org/licenses/by-sa/4.0/" />
+
+</head>
+
+<body>
+  <p>Open console, make changes, and view the results</p>
+    <script>
+
+      //"use strict";   // uncomment to see effect
+      var myVar = 5;    // This is the variable you want
+      myVart = 10;      // Oops, wrong name
+
+      var myArray = [1, 2, 3];
+      console.log (myArray[1]); // Element 1 only
+      console.log (myArray);    // All elements
+
+      var myObject = {
+        month:  "January",
+        day:    5,
+        year:   2021
+      }
+      console.log (myObject.month);  // month property only
+      console.log (myObject); // All properties
+
+      var myNumber = 5;
+      if (myNumber == 6) {
+        myNumber = myVar;
+      }
+
+    </script>
+
+</body>
+</html>

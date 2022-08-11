@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<!-- Text like this is formatted as an HTML comment, and is not used by the browser.
+Styles and JavaScript comments use a different method for comments. -->
+
+<head>
+<meta charset="utf-8">
+<title>Ruins of Ramic, Lesson 1 - Game Shell</title>
+<meta name="description" content="Ruins of Ramic, Lesson 1 - Game Shell. Version 1.0" />
+<meta name="author" content="The Gamer's Guide to Coding; www.buenacreek.com" />
+<meta name="dcterms.rights" content="https://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Style sheet for definining the look of the page -->
+<style>
+
+/* Text like this denotes a style comment. It's ignored by the browser. */
+
+/* Main play area */
+#mainContent {
+  position: absolute;
+  background-image: url("./assets/ruins-playboard-basic.jpg");
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  padding: 2px;
+  width: 1000px;
+  height: 700px;
+  overflow: hidden;
+}
+
+/* Individual cards */
+.card {
+  position: absolute;
+  margin-left: 0px;
+  margin-top: 0px;
+  width: 167px;
+  height: 200px;
+  border: 1px solid white;
+  user-select: none;
+  cursor: pointer;
+  visibility: visible;
+}
+</style>
+
+</head>
+
+<!-- Start of visible page -->
+<body>
+
+  <!-- Everything on the page goes into this DIV element -->
+  <div id="mainContent">
+
+    <!-- Set of 12 cards, three rows of four columns each -->
+    <img id="card1" class="card" style="left:260px; top:35px;" alt="1" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+    <img id="card2" class="card" style="left:440px; top:35px;" alt="1" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+    <img id="card3" class="card" style="left:620px; top:35px;" alt="2" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+    <img id="card4" class="card" style="left:800px; top:35px;" alt="2" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+
+    <img id="card5" class="card" style="left:260px; top:250px;" alt="3" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+    <img id="card6" class="card" style="left:440px; top:250px;" alt="3" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+    <img id="card7" class="card" style="left:620px; top:250px;" alt="4" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+    <img id="card8" class="card" style="left:800px; top:250px;" alt="4" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+
+    <img id="card9" class="card" style="left:260px; top:465px;" alt="5" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+    <img id="card10" class="card" style="left:440px; top:465px;" alt="5" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+    <img id="card11" class="card" style="left:620px; top:465px;" alt="6" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+    <img id="card12" class="card" style="left:800px; top:465px;" alt="6" src="./assets/ruins-back.jpg" onclick="clickCard(this);" />
+
+  </div>
+
+  <!-- JavaScript code goes here-->
+  <script>
+
+    /*  Text like this denotes a JavaScript coding comment.
+        It can span more than one line
+        It's ignored by the browser.
+    */
+    // This is also a JavaScript comment, but it cannot span more than one line.
+    // This form of one-line comment cannot be used in HTML or styles.
+
+    // Do when a card is clicked
+    function clickCard(card) {
+      console.log ("You clicked on: " + card.id);       // This text appears in the browser's console (hidden developer's panel)
+      alert ("You clicked on: " + card.id + "  \n\n(Alert messages like this are awful. For coding feedback, it's better to print messages in the browser console. Right-click, Inspect, choose Console tab. We'll do that from now on.)");
+
+      /*
+        Note: the console.log JavaScript statement is used during development. It is not standardized among all the browsers,
+        especially the old ones, but is implemented in most modern browsers like current versions of Google Chrome and Firefox.
+        Be sure to use these browsers for your development work.
+
+        In addition to informational messages you can send to the console, the console is used by the browser to report
+        errors and warnings. It is an indispensible tool for coding in JavaScript. It is your friend.
+      */
+
+    }
+
+  </script>
+
+</body>
+</html>
