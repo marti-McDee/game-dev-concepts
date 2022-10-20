@@ -2,26 +2,28 @@
 <html lang="en-us">
 
 <head>
-<meta charset="utf-8" />
-<title>Number Guess - Lesson 1</title>
-<meta name="description" content="Number Guess - Lesson 1. Version 1.0" />
-<meta name="author" content="The Gamer's Guide to Coding" />
-<meta name="dcterms.rights" content="https://creativecommons.org/licenses/by-sa/4.0/" />
+  <meta charset="utf-8" />
+  <title>Number Guess - Lesson 1</title>
+  <meta name="description" content="Number Guess - Lesson 1. Version 1.0" />
+  <meta name="author" content="The Gamer's Guide to Coding" />
+  <meta name="dcterms.rights" content="https://creativecommons.org/licenses/by-sa/4.0/" />
 </head>
 
 <!-- start of visible page -->
+
 <body>
 
-    <p id="prompt">I'm thinking of a number from 1 to 10. Can you guess it?</p>
-    <input id="guess" type="text" value="" />
-    <input type="button" value="Guess" onclick="numberGuess();" />
+  <p id="prompt">I'm thinking of a number from 1 to 10. Can you guess it?</p>
+  <input id="guess" type="number" min="1" max="10" value="" />
+  <input id="submit" type="button" value="Guess" />
 
-    <!-- JavaScript code placed at end of <body> element -->
-    <script>
+  <!-- JavaScript code placed at end of <body> element -->
+  <script>
 
     function numberGuess() {
       var randomNumber = Math.floor((Math.random() * 10) + 1);
       var yourGuess = document.getElementById("guess");
+      var psuedo = 45
 
       if (yourGuess.value == randomNumber) {
         document.getElementById("prompt").innerHTML = "That is correct!";
@@ -30,8 +32,14 @@
       }
 
     }
+  
+    const submit = document.getElementById('submit')
+    submit.addEventListener('click', numberGuess)
 
-    </script>
+  </script>
+
+
 
 </body>
+
 </html>
